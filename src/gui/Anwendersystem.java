@@ -1,6 +1,8 @@
 package gui;
 
 import java.io.*;
+
+import business.CsvDateiLeser;
 //import business.CsvDateiLeser;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -18,8 +20,8 @@ import javafx.stage.Stage;
  */
 public class Anwendersystem{
 
-    	// Objekt zum Lesen der Kunden.csv - Datei
-    	//private CsvDateiLeser csvDateiLeser;
+    	//Objekt zum Lesen der Kunden.csv - Datei
+    	private CsvDateiLeser csvDateiLeser;
     	private GridPane grid        = new GridPane();
     	private Label lblAnzeige     = new Label ("Anzeige");
     	private TextArea txtAnzeige  = new TextArea();
@@ -31,13 +33,13 @@ public class Anwendersystem{
      		* @param primaryStage das Stage-Objekt zum Basisfenster
     		*/
    		public Anwendersystem(Stage primaryStage){
-            	//this.csvDateiLeser = new CsvDateiLeser();
+            	this.csvDateiLeser = new CsvDateiLeser();
         		this.grid.setAlignment(Pos.CENTER);
 	    		this.grid.setHgap(10);
 	    		this.grid.setVgap(10);
 	    		this.grid.setPadding(new Insets(25, 25, 25, 25));
-	    	//	primaryStage.setTitle(
-	         		//this.csvDateiLeser.getUeberschrift());	
+	    		primaryStage.setTitle(
+	         		this.csvDateiLeser.getUeberschrift());	
 	     		Scene scene = new Scene(grid, 210, 200);
 	    		primaryStage.setScene(scene);
         		primaryStage.show();
@@ -83,6 +85,7 @@ String meldung){
         		alert.setHeaderText(ueberschrift);
         		alert.setContentText(meldung);
         		alert.show();
+        		//A
     		}
 }
 
